@@ -1,0 +1,52 @@
+
+.container{
+  padding: 5%;
+}
+.form{
+    padding: 5%;
+     background-color: #f1f1f1;
+}
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+   
+  }
+  
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  input{
+    border: 1px solid #ccc; 
+  }
+  button {
+    background-color: #694d9c;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  button:hover {
+    background-color: #b4a4d0;
+  }
+
+  .label{
+      text-align: center;
+  }
+
+ 

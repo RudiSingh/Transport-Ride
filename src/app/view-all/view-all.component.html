@@ -1,0 +1,29 @@
+<div class="form">
+    <table *ngIf="riders.length>0; else noRecord">
+        <tr>
+            <th>Employee ID</th>
+            <th>Vehicle Type</th>
+            <th>Vehicle No</th>
+            <th>Vehicle Seat</th>
+            <th>PickUp Time</th>
+            <th>Drop Time</th>
+            <th>Pickup Point</th>
+            <th>Drop Point</th>
+        </tr>
+        <tr *ngFor ="let ride of riders" class="scrollit" >
+          <td><a>{{ ride.employeeId }}</a></td>
+          <td>{{ ride.vehicleType }}</td>
+          <td>{{ ride.vehicleNo }}</td>
+          <td>{{ ride.vehicleSeat }}</td>
+          <td><div [ngStyle]="{'background-color':currentHr+1 == ride.pickUpTime ? '#64d464' : currentHr-1 == ride.pickUpTime ? '#64d464' : (currentHr == ride.pickUpTime ? '#64d464' : '#ca5a5a')} ">{{ ride.pickUpTime }}</div></td>
+          <td><div [ngStyle]="{'background-color':currentHr+1 == ride.dropTime ? '#64d464' : currentHr-1 == ride.dropTime ? '#64d464' : (currentHr == ride.dropTime ? '#64d464' : '#ca5a5a')} ">{{ ride.dropTime }}</div></td>
+          <td>{{ ride.pickUpPoint }}</td>
+          <td>{{ ride.dropPoint }}</td>
+        </tr>
+      </table> 
+    
+      <ng-template #noRecord>
+        <div>NO Records</div>
+      </ng-template>
+</div>
+

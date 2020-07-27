@@ -1,0 +1,72 @@
+
+ <div class="form">
+  <div class="filterDiv">
+    <input type="checkbox" [checked]="filterBike" id="bike" (click)="filterBy(bike)"><span class="lab" > Bike :</span>
+    <input type="checkbox" [checked]="filterCar" id="car" (click)="filterBy(car)"><span class="lab">Car :</span>
+    <input  type="checkbox" [checked]="filterAll" id="all" (click)="filterBy(all)"><span class="lab"> All :</span>
+  </div>
+  <table *ngIf="riders.length>0; else noRecord">
+    <tr>
+        <th>Employee ID</th>
+        <th>Vehicle Type</th>
+        <th>Vehicle No</th>
+        <th>Vehicle Seat</th>
+        <th>PickUp Time</th>
+        <th>Drop Time</th>
+        <th>Pickup Point</th>
+        <th>Drop Point</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor ="let ride of riders" class="scrollit" >
+      <td><a>{{ ride.employeeId }}</a></td>
+      <td>{{ ride.vehicleType }}</td>
+      <td>{{ ride.vehicleNo }}</td>
+      <td>{{ ride.vehicleSeat }}</td>
+      <td><div [ngStyle]="{'background-color':currentHr+1 == ride.pickUpTime ? '#64d464' : currentHr-1 == ride.pickUpTime ? '#64d464' : (currentHr == ride.pickUpTime ? '#64d464' : '#ca5a5a')} ">{{ ride.pickUpTime }}.00</div></td>
+      <td><div [ngStyle]="{'background-color':currentHr+1 == ride.dropTime ? '#64d464' : currentHr-1 == ride.dropTime ? '#64d464' : (currentHr == ride.dropTime ? '#64d464' : '#ca5a5a')} ">{{ ride.dropTime }}.00</div></td>
+      <td>{{ ride.pickUpPoint }}</td>
+      <td>{{ ride.dropPoint }}</td>
+      <td><button (click)="bookRide(ride)">Book</button></td>
+    </tr>
+  </table> 
+
+  <div  #booker>
+    <div *ngIf="isConfirmed"  [ngClass]="isAdded ? 'ribionSucces' : 'ribionError'" [innerHtml]="ribionData"></div>
+    <div *ngIf="isBooker" class="bookForm">
+      <div style="text-align: center;">Employe ID : <input type="text" name="employeeId" [(ngModel)] = "empId"/> 
+        <!-- <span style="float:right"><button (click)="cancel()" >cancel</button></span> -->
+      </div>
+      <table *ngIf="bookerRide.length>0">
+        <tr>
+            <th>Employee ID</th>
+            <th>Vehicle Type</th>
+            <th>Vehicle No</th>
+            <th>Vehicle Seat</th>
+            <th>PickUp Time</th>
+            <th>Drop Time</th>
+            <th>Pickup Point</th>
+            <th>Drop Point</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor ="let ride of bookerRide" >
+          <td><a>{{ ride.employeeId }}</a></td>
+          <td>{{ ride.vehicleType }}</td>
+          <td>{{ ride.vehicleNo }}</td>
+          <td>{{ ride.vehicleSeat }}</td>
+          <td><div [ngStyle]="{'background-color':currentHr+1 == ride.pickUpTime ? '#64d464' : currentHr-1 == ride.pickUpTime ? '#64d464' : (currentHr == ride.pickUpTime ? '#64d464' : '#ca5a5a')} ">{{ ride.pickUpTime }}.00</div></td>
+          <td><div [ngStyle]="{'background-color':currentHr+1 == ride.dropTime ? '#64d464' : currentHr-1 == ride.dropTime ? '#64d464' : (currentHr == ride.dropTime ? '#64d464' : '#ca5a5a')} ">{{ ride.dropTime }}.00</div></td>
+          <td>{{ ride.pickUpPoint }}</td>
+          <td>{{ ride.dropPoint }}</td>
+          <td><button (click)="bookRiderEmp(ride)">Confirm Book</button></td>
+        </tr>
+      </table> 
+    </div>
+  </div>
+  
+
+  <ng-template #noRecord>
+    <div>NO Records</div>
+  </ng-template>
+ 
+ </div>
+ 

@@ -1,0 +1,73 @@
+ <div class="container"> <!--[ngClass]="isAdded?ribionSucces:ribionError"-->
+   <div *ngIf="isSbumit"  [ngClass]="isAdded ? 'ribionSucces' : 'ribionError'" [innerHtml]="ribionData"></div>
+    <form class ="form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="column">
+              <div class="label">Employee ID : </div>
+            </div>
+            <div class="column" >
+                <input type ="text" name="employeeId" formControlName="employeeId"  [(ngModel)] ="addRide.employeeId">
+            </div>
+            <div class="column">
+                <div class="label">Vehicle type: </div>
+            </div>
+            <div class="column">
+                <select id="country" name="vehicleType" formControlName="vehicleType" [(ngModel)] ="addRide.vehicleType">
+                    <option value="bike">Bike</option>
+                    <option value="car">Car</option>
+                  </select>
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="column">
+              <div class="label">Vehicle No : </div>
+            </div>
+            <div class="column" >
+                <input type ="text" name="vehicleNo" formControlName="vehicleNo" [(ngModel)] ="addRide.vehicleNo">
+            </div>
+            <div class="column">
+                <div class="label">Vehicle Seat: </div>
+            </div>
+            <div class="column">
+                <input type ="text" name="vehicleSeat" formControlName="vehicleSeat" [(ngModel)] ="addRide.vehicleSeat">
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="column">
+              <div class="label">Pickup Time : </div>
+            </div>
+            <div class="column" >
+                <input type ="text" name="pickupTime" formControlName="pickUpTime" [(ngModel)] ="addRide.pickUpTime">
+            </div>
+            <div class="column">
+                <div class="label">  Drop Time: </div>
+            </div>
+            <div class="column">
+                <input type ="text" name="dropTime" formControlName="dropTime" [(ngModel)] ="addRide.dropTime">
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="column">
+              <div class="label">Pickup point : </div>
+            </div>
+            <div class="column" >
+                <input type ="text" name="pickupPoint" formControlName="pickUpPoint" [(ngModel)] ="addRide.pickUpPoint">
+            </div>
+            <div class="column">
+                <div class="label">Drop point: </div>
+            </div>
+            <div class="column">
+                <input type ="text" name="dropPoint" formControlName="dropPoint" [(ngModel)] ="addRide.dropPoint">
+            </div>
+          </div>
+          <div class="row" style="margin:1%">
+            <div> <button type="submit" class="submit" > Submit</button> </div>
+            <div style="padding-right: 8%;"> <button class="clear" (click)="clearRider()"> Clear</button></div>
+            
+          </div>
+        </form>
+ </div>
+  
